@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        #header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            height: 50px;
+            width: 50px;
+        }
+
+        #navbar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        #navbar li {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #navbar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        #navbar a:hover {
+            background-color: #555;
+        }
+
+        #page-header {
+            padding: 20px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #products {
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            justify-content: space-between; /* Space between cards */
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: calc(33% - 20px); /* Three cards per row */
+            box-sizing: border-box; /* Include padding and border in width calculation */
+            text-align: center; /* Center text in cards */
+        }
+
+        .product img {
+            max-width: 100%; /* Make images responsive */
+            border-radius: 4px;
+            height: 200px; /* Fixed height for uniformity */
+            object-fit: cover; /* Ensure images cover the area */
+        }
+
+        .product:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .product h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .product p {
+            color: #555;
+            margin: 0 0 10px;
+        }
+
+        .product button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .product button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<section id="header">
+    <a href="#"><img src="image1.png" class="logo" alt="Logo"></a>
+    <div>
+        <ul id="navbar">
+            <li><a href="project..1.html">Home</a></li>
+           
+            <li><a href="practice.html">Rate Us</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="product7.html"><i class="far fa-shopping-bag"></i></a></li>
+        </ul>
+    </div>
+</section>
+
+<section id="page-header">
+    <h2>#Stayhome</h2>
+    <p>Save more with coupons & up to 70% off!</p>
+</section>
+
+<section id="products">
+    
+    <div class="product" data-id="1" data-name="skybag " data-price="20">
+        <img src="tr1.jpg" alt="skybag">
+        <h2>skybag</h2>
+        <p>Price: $20</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="2" data-name="eyeliner" data-price="30">
+        <img src="mak3.png" alt="eyeliner">
+        <h2>eyeliner</h2>
+        <p>Price: $30</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="3" data-name="kids pants" data-price="40">
+        <img src="images/FirstCry kids pants shirt .jpg" alt="kids pants">
+        <h2>kids pants</h2>
+        <p>Price: $40</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="4" data-name="yellow bag" data-price="25">
+        <img src="tr5.jpg" alt="yellow bag">
+        <h2>yellow bag</h2>
+        <p>Price: $25</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="5" data-name="balenciaga blue print mens shirt" data-price="35">
+        <img src="images/balenciaga blue print mens shirt.jpg" alt="balenciaga blue print mens shirt">
+        <h2>balenciaga blue print mens shirt</h2>
+        <p>Price: $35</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="6" data-name="tools kit " data-price="45">
+        <img src="images/e2.jpg" alt="tools kit">
+        <h2>tools kit</h2>
+        <p>Price: $45</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="7" data-name="H&M women orange dress" data-price="45">
+        <img src="images/H&M women orange dress.jpg" alt="H&M women orange dress">
+        <h2>H&M women orange dress</h2>
+        <p>Price: $45</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="8" data-name="puma blue print womens shirt" data-price="45">
+        <img src="images/puma blue print womens shirt.jpg" alt="puma blue print womens shirt">
+        <h2>puma blue print wmens shirt</h2>
+        <p>Price: $45</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="9" data-name="leather bag" data-price="45">
+        <img src="tr8.jpg" alt="leather bag">
+        <h2>leather bag</h2>
+        <p>Price: $45</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+</section>
+
+<script>
+    // Promise-based delay function
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // Function to show navbar
+    function showNavbar() {
+        const navbar = document.getElementById('navbar');
+        navbar.style.display = 'flex';
+        const items = navbar.querySelectorAll('li');
+        
+        // Delay for each item in the navbar
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '1'; // Make each item visible
+            }, 1000 + index * 500);
+        });
+    }
+
+    // Main function to execute on load
+    async function init() {
+        await delay(500);
+        showNavbar();
+    }
+
+    // Execute init on page load
+    window.onload = init;
+
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const product = button.parentElement;
+            const productId = product.dataset.id;
+            const productName = product.dataset.name;
+            const productPrice = product.dataset.price;
+
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProduct = cartItems.find(item => item.id === productId);
+
+            if (existingProduct) {
+                existingProduct.quantity += 1; // Increase quantity if already in cart
+            } else {
+                cartItems.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            alert(`${productName} added to cart!`);
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        #header {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            height: 50px;
+            width: 50px;
+        }
+
+        #navbar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        #navbar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        #navbar a:hover {
+            background-color: #555;
+        }
+
+        #cart {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart h1 {
+            margin: 0 0 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        .cart-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-item p {
+            margin: 0;
+            flex: 1;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .remove-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .remove-button:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .shop-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .shop-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section id="header">
+    <a href="#"><img src="image1.png" class="logo" alt="Logo"></a>
+    <ul id="navbar">
+        <li><a href="project..1.html">Home</a></li>
+        <li><a href="practice.html">Rate Us</a></li>
+        <li><a href="product3.html">Shop</a></li>
+        <li><a href="product7.html"><i class="far fa-shopping-bag"></i></a></li>
+    </ul>
+</section>
+
+<section id="cart">
+    <h1>Your Cart</h1>
+    <div id="cart-items"></div>
+    <div class="total" id="total-price">Total: $0</div>
+    <button class="shop-button" ><a href="product3.html">Shop Now</a></button>
+</section>
+
+
+
+<script>
+    function displayCart() {
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = ''; // Clear existing items
+
+        let total = 0;
+
+        cartItems.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('cart-item');
+            itemDiv.innerHTML = `
+                <p>${item.name} - $${item.price} (x${item.quantity})</p>
+                <button class="remove-button" data-index="${index}">Remove</button>
+            `;
+            cartItemsContainer.appendChild(itemDiv);
+            total += item.price * item.quantity; // Calculate total price
+        });
+
+        document.getElementById('total-price').innerText = `Total: $${total.toFixed(2)}`;
+
+        // Add event listeners to remove buttons
+        const removeButtons = document.querySelectorAll('.remove-button');
+        removeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const index = button.dataset.index;
+                cartItems.splice(index, 1); // Remove item from array
+                localStorage.setItem('cart', JSON.stringify(cartItems)); // Update localStorage
+                displayCart(); // Refresh the cart display
+            });
+        });
+    }
+
+    // Execute displayCart on page load
+    window.onload = displayCart;
+</script>
+
+</body>
+</html>

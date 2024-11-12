@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'spartan',sans-serif;
+  }
+  
+  h1{
+      font-size: 50px;
+      line-height: 64px;
+      color: #222;
+  }
+  
+  h2 {
+      font-size: 46px;
+      line-height: 54px;
+      color: #222;
+  }
+  
+  h4{
+      font-size: 20px;
+      color: #222;
+  }
+  
+  
+  h6 {
+      font-weight: 700;
+      font-size: 12px;
+  }
+  
+  p {
+      font-size: 16px;
+      color: #465b52;
+      margin: 15px 0 20px 0;
+  }
+  
+  .section-p1{
+      padding: 40px 80px;
+  }
+  
+  .section-m1{
+      margin: 40px 0;
+  }
+  
+  
+  
+  
+  
+  body{
+      width: 100%;
+  }
+  
+  
+  
+  
+  #product1{
+      text-align: center;
+  }
+  
+  #product1 .pro-container{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 20px;
+      flex-wrap: wrap;
+  }
+  
+  #product1 .pro{
+      width: 23%;
+      min-width: 250px;
+      padding: 10px 12px;
+      border: 1px solid #cce7d0;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+      margin: 15px 0;
+      transition: 0.2s ease;
+      position: relative;
+  }
+  #product1 .pro:hover{
+      box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+  }
+  #product1 .pro img {
+      width: 100%;
+      border-radius: 20px;
+  }
+  
+  #product1 .pro .des{
+      text-align: start;
+      padding: 10px 0;
+  }
+  
+  #product1 .pro .des span{
+      color: #606063;
+      font-size: 12px;
+  } 
+  
+  #product1 .pro .des h5{
+      padding-top: 7px;
+      color: #1a1a1a;
+      font-size: 14px;
+  }
+  
+  #product1 .pro .des i {
+      font-size: 12px;
+      color: rgb(243, 181, 25);
+  }
+  
+  #product1 .pro .des h4{
+      padding-top: 7px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #088178;
+  }
+  
+  #product1 .pro .cart{
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50px;
+      background-color: #e8f6ea;
+      font-size: 500;
+      color: #088178;
+      border: 1px solid #cce7d0;
+      position: absolute;
+      bottom: 20px;
+      right: 10px;
+  }
+  </style>
+<body>
+    <section id="product1" class="section-p1"> 
+    <h2>Feature product</h2>
+    <p>Summer Collection New Modern Design</p></section>
+
+        <div class="search-container" style="text-align: right;">
+            <input type="text" placeholder="Enter name to search" id="searchbox" class="search-input">
+           
+             <button class="btn btn-primary" onclick="searchitem()">Search</button>
+             <button class="btn btn-danger" onclick="clearitem()">Clear</button>
+       
+        <div class="row" id="cont" style="text-align: center;"></div>
+    </div>
+    <script>
+
+let items = [
+    { id: 1, name: 'adidas mens shirt', price: 30 },
+    { id: 2, name: 'adidas mens black shirt', price: 90 },
+    { id: 3, name: 'adidas printed mens shirt', price: 23 },
+    { id: 4, name: 'adidas white print mens shirt', price: 25 },
+    { id: 5, name: 'adidas women printed top', price: 25 },
+    { id: 6, name: 'BIBA dress women ', price: 25 },
+    { id: 7, name: 'BIBA women blue dress', price: 50 },
+    { id: 8, name: 'H&M women brown dress', price: 89 },
+    { id: 9, name: 'Hopscotch green kids tracksuit ', price: 25 },
+    { id: 10, name: 'Hopscotch kids hoodie', price: 85 },
+    { id: 4, name: 'Hopscotch kids printed dress', price: 65 },
+    { id: 4, name: 'Hopscotch kids dress', price: 25 },
+    { id: 4, name: 'adidas mens shirt', price: 50 },
+    { id: 4, name: 'nike floral print mens shirt', price: 30 },
+    { id: 4, name: 'nike mens jeans', price: 20 },
+    { id: 4, name: 'nike mens printed t-shirt', price: 60 },
+    { id: 4, name: 'puma black jeans women', price: 50 },
+    { id: 4, name: 'puma blue jeans women', price: 30 },
+    { id: 4, name: 'H&M women brown dress', price: 20 },
+    { id: 4, name: 'H&M women orange dress', price: 60 },
+    { id: 4, name: 'polo t-shirt mens blue colour', price: 50 },
+    { id: 4, name: 'nike women pants', price: 30 },
+    { id: 4, name: 'puma women light blue shirt', price: 20 },
+    { id: 4, name: 'puma black jeans women', price: 60 }
+    ];
+
+
+
+
+
+window.onload = function () {
+    displayitems(items);
+};
+
+
+function displayitems(items){
+    let cont = document.getElementById('cont');
+    cont.innerHTML = '';
+    items.forEach(item => {
+     let div = document.createElement("div");
+     div.classList.add("col-2", "m-5");
+     div.innerHTML = `<img src="./images/${item.name}.jpg" alt="${item.name}" width="150px" height="150px">
+                      <div>${item.name}</div>
+                      <div>${item.price} ${'$'}</div>
+     `;
+     cont.appendChild(div);
+    });
+
+}
+
+function searchitem(){
+let query = document.getElementById('searchbox').value.toLowerCase();
+let result = items.filter(item=>item.name.toLocaleLowerCase().includes(query))
+displayitems(result);
+ 
+}
+
+function clearitem(){
+    displayitems(items);
+    document.getElementById('searchbox').value = "";
+}
+
+    </script>
+   
+</body>
+</html>
